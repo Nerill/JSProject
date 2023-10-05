@@ -1,30 +1,29 @@
-function sortUserNames() //Task 1
+//Task 1 --------------------------------------------------------------------------------------------
 {
     const userNames = ["Петрик Ольга Іванівна", "Гнатюк Петро Антонович", "Рудко Андрій Опанасович"];
-    let initials;
-
-    initials = new Array();
+    let initials = [];
+    
     for (let fullName of userNames)
     {
-        let name = fullName.split(' '); 
-        initials.push(`${name[0][0]}.${name[1][0]}.${name[2][0]}.`);  
+        let name = fullName.split(' ');  
+        initials.push(name.map((x)=>x[0]).join('.'));
     }
     initials.sort();
 
     console.log(initials); // [ "Г.П.А.", "П.О.І.", "Р.А.О."]
 }
+//---------------------------------------------------------------------------------------------------
 
-function filterByConditionConstruct() //Task 2.1
+
+//Task 2.1 ------------------------------------------------------------------------------------------
 {
     const userNames = ['Петро', 'Емма', 'Юстин', 'Ілля', 'Марта', 'Яна', 'Василь', 'Антон', 'Олена'];
-    let filteredNames;
+    let filteredNames=[];
+    const letters = ['А','Е','О','У','Є','Ю','І','Ї','Я'];
 
-    filteredNames = new Array();
     for (let fName of userNames)
     {
-        if(fName[0] == 'А' || fName[0] == 'Е' || fName[0] == 'О' || fName[0] == 'У'
-        || fName[0] == 'Є' || fName[0] == 'Ю' || fName[0] == 'І' || fName[0] == 'Ї'
-        || fName[0] == 'Я')
+        if(letters.includes(fName[0]))
         {
             filteredNames.push(fName);
         }
@@ -32,45 +31,36 @@ function filterByConditionConstruct() //Task 2.1
 
     console.log(filteredNames); // ['Емма', 'Юстин', 'Ілля', 'Яна', 'Антон', 'Олена']
 }
+//----------------------------------------------------------------------------------------------------
 
-function filterByInBuildFunc() //Task 2.2
+//Task 2.2 -------------------------------------------------------------------------------------------
 {
     const userNames = ['Петро', 'Емма', 'Юстин', 'Ілля', 'Марта', 'Яна', 'Василь', 'Антон', 'Олена'];
     let filteredNames;
+    const letters = ['А','Е','О','У','Є','Ю','І','Ї','Я']; 
  
-    filteredNames = userNames.filter((fName) => 
-        fName[0] == 'А'
-        || fName[0] == 'Е'
-        || fName[0] == 'О'
-        || fName[0] == 'У'
-        || fName[0] == 'Є'
-        || fName[0] == 'Ю'
-        || fName[0] == 'І'
-        || fName[0] == 'Ї'
-        || fName[0] == 'Я');
+    filteredNames = userNames.filter((fName) => letters.includes(fName[0]));
 
     console.log(filteredNames); // ['Емма', 'Юстин', 'Ілля', 'Яна', 'Антон', 'Олена']
 }
+//----------------------------------------------------------------------------------------------------
 
-function reversNumbers() //Task 3
+//Task 3 ---------------------------------------------------------------------------------------------
 {
     const currentMaxValue = 4589;
     let reverseMaxValue;
 
     let valueString = currentMaxValue.toString();
-    let arrValue = new Array();
-    for(let idx = 0; idx < valueString.length; idx++)
-    {
-        arrValue.push(valueString[idx]);
-    }
+    let arrValue = valueString.split('');
     arrValue.reverse();    
     reverseMaxValue = Number(arrValue.join(''));
 
     console.log(reverseMaxValue); // 9854
     console.log(typeof reverseMaxValue); // 'number'
 }
+//------------------------------------------------------------------------------------------------------
 
-function multiplyArrayItems() //Task 4
+//Task 4 -----------------------------------------------------------------------------------------------
 {
     const resultsArray = [1, 2, [3, [4]]];
     let productOfArray;
@@ -79,3 +69,4 @@ function multiplyArrayItems() //Task 4
 
     console.log(productOfArray); // 24
 }
+//-------------------------------------------------------------------------------------------------------
